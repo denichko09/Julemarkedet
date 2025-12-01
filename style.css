@@ -82,8 +82,11 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
 
 /* Hero */
 .hero{padding:2.4rem 0 1.2rem}
-.hero-title{font-family:'Playfair Display',serif;font-size:2.2rem;margin:0;color:#333}
-.hero-lead{color:#666;margin-top:0.4rem}
+.hero{display:flex;align-items:center;justify-content:flex-end;min-height:200px}
+.hero-container{display:flex;justify-content:flex-end}
+.hero-content{text-align:right;max-width:500px}
+.hero-title{font-family:'Playfair Display',serif;font-size:2.2rem;margin:0;color:#000}
+.hero-lead{color:#000;margin-top:0.4rem;font-size:1rem;font-weight:500}
 
 /* Layout */
 .layout{display:flex;gap:1.25rem;align-items:flex-start}
@@ -162,6 +165,9 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
   .filter-btn.active span{display:inline-block}
   .hero-title{font-size:1.4rem;margin:0.5rem 0}
   .hero-lead{font-size:0.9rem}
+    .hero{min-height:150px;justify-content:center}
+    .hero-container{justify-content:center}
+    .hero-content{text-align:center}
   .grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.5rem;padding:0 0.2rem}
   .card{padding:0.4rem}
   .card img{height:100px}
