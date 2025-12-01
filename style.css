@@ -9,16 +9,28 @@
   --radius:12px;
   --warm: #1f2937; /* text color (dark) */
 }
-    --bg:#ffffff;
-    --card: rgba(255,255,255,0.65);
-    --muted:#6b7280;
-    --accent:#c0392b;
-    --accent-2:#b08900;
-    --glass: rgba(255,255,255,0.5);
+
+*,*::before,*::after{
+  box-sizing:border-box;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  margin:0;
+  padding:0;
+  overflow-x:hidden;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
   color:var(--warm);
   -webkit-font-smoothing:antialiased;
+  touch-action:manipulation;
+  -webkit-text-size-adjust:100%;
 }
-.container{width:98%;max-width:1600px;margin:0 auto}
+.container{width:100%;max-width:1600px;margin:0 auto;padding:0 0.5rem}
   #christmas-bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0.7;z-index:0;pointer-events:none}
 /* Background layers and snowman */
   .site-header{position:relative;padding:1rem 0 0.6rem;background:transparent}
@@ -81,7 +93,7 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
 .sidebar h3 .icon{width:18px;height:18px;flex:0 0 18px}
 .list{list-style:none;padding:0;margin:0;max-height:300px;overflow:auto}
 .list li{display:flex;justify-content:space-between;padding:0.35rem 0.3rem;border-radius:8px}
-.btn{background:transparent;border:1px solid rgba(0,0,0,0.1);padding:0.5rem 0.7rem;border-radius:8px;color:var(--warm);cursor:pointer}
+.btn{background:transparent;border:1px solid rgba(0,0,0,0.1);padding:0.5rem 0.7rem;border-radius:8px;color:var(--warm);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
 .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04)}
 .btn.small{padding:0.35rem 0.5rem;font-size:0.9rem}
 
@@ -95,7 +107,7 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
 .card h4{margin:0.6rem 0 0.2rem 0;font-size:1.02rem;color:#333}
 .card p{margin:0;color:#666;font-size:0.92rem}
 .card .meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
-.icon-btn{background:transparent;border:none;color:#999;cursor:pointer;font-size:1.1rem}
+.icon-btn{background:transparent;border:none;color:#999;cursor:pointer;font-size:1.1rem;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:0.3rem;border-radius:6px}
 .fav{color:#ff8a8a}
 
 /* Modal */
@@ -141,10 +153,10 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
   .logo{font-size:1.2rem}
   .subtitle{font-size:0.8rem}
   .controls{gap:0.5rem}
-  #search{padding:0.5rem 0.7rem;font-size:1rem}
+  #search{padding:0.5rem 0.7rem;font-size:1rem;min-width:auto}
   #search::placeholder{font-size:0.9rem}
   .filters{gap:0.3rem}
-  .filter-btn{padding:0.35rem 0.5rem;font-size:0.8rem}
+  .filter-btn{padding:0.35rem 0.5rem;font-size:0.8rem;min-height:40px}
   .filter-btn .icon{width:16px;height:16px}
   .filter-btn span{display:none}
   .filter-btn.active span{display:inline-block}
@@ -156,8 +168,8 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
   .card h4{margin:0.4rem 0 0.1rem 0;font-size:0.9rem}
   .card p{font-size:0.8rem;display:none}
   .card .meta{gap:0.3rem}
-  .btn.add-btn{padding:0.3rem 0.5rem;font-size:0.8rem}
-  .btn.view-btn{padding:0.3rem 0.5rem;font-size:0.8rem}
+  .btn.add-btn{padding:0.3rem 0.5rem;font-size:0.8rem;min-height:40px}
+  .btn.view-btn{padding:0.3rem 0.5rem;font-size:0.8rem;min-height:40px}
   .modal-content{width:98%;padding:0.8rem;border-radius:8px;max-height:85vh}
   .modal-content img{max-height:200px}
   .close{font-size:1.5rem;right:0.5rem;top:0.5rem}
@@ -170,6 +182,7 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
   .shopping-actions .btn{flex:1;padding:0.4rem 0.3rem;font-size:0.8rem}
   main{padding:1rem 0.5rem 6rem}
   .hero{padding:1.5rem 0 0.8rem}
+  body{-webkit-user-select:none;user-select:none}
 }
 
 @media (max-width:360px){
@@ -184,6 +197,8 @@ main {
   padding: 2rem 0.5rem 6rem;
   min-height: 100vh;
   background: transparent;
+  display:flex;
+  flex-direction:column;
 }
 
 /* Spotify-lignende kort design */

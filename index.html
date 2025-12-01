@@ -76,25 +76,16 @@
             <section class="hero">
               <div class="container">
                 <h2 class="hero-title">Smag på julen i Danmark</h2>
-                <p class="hero-lead">Kig, søg og byg din indkøbsliste — alt gemmes i din browser.</p>
+                <p class="hero-lead">Kig, søg og find dine yndlings juleretter</p>
               </div>
             </section>
 
             <div class="container layout">
-              <aside class="sidebar" aria-label="Indkøbsliste og favoritter">
+              <aside class="sidebar" aria-label="Favoritter">
                 <div class="sidebar-section">
                   <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-4.5-9-7A5 5 0 016 4a4 4 0 016 0 4 4 0 016 10c-2 2.5-9 7-9 7z" fill="currentColor"/></svg> Favoritter</h3>
                   <ul id="favorites" class="list"></ul>
                 </div>
-                <div class="sidebar-section">
-                  <h3><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4h-2l-1 2h2l3.6 7.59-1.35 2.45A1 1 0 0010 18h8v-2H11.42a.25.25 0 01-.21-.12L12 15h6a1 1 0 00.92-.62l1.38-3.45A1 1 0 0019.4 9H8.21L7 4z" fill="currentColor"/></svg> Indkøbsliste</h3>
-                  <ul id="shopping-list" class="list"></ul>
-                  <div class="shopping-actions">
-                    <button id="clear-shopping" class="btn small">Ryd</button>
-                    <button id="export-shopping" class="btn small ghost">Eksporter</button>
-                  </div>
-                </div>
-                <!-- 'Stemning' toggles removed per user request -->
               </aside>
 
               <section class="grid-wrap">
@@ -123,7 +114,6 @@
                   <ol id="modal-recipe"></ol>
                   <div class="modal-actions">
                     <button id="modal-fav" class="btn">Favorit</button>
-                    <button id="modal-add" class="btn primary">Tilføj til indkøb</button>
                   </div>
                 </div>
               </div>
@@ -143,7 +133,7 @@
 
           <footer class="site-footer">
             <div class="container">
-              © Jul & Mad — En lille festlig demo · Gemmes lokalt i din browser
+              © Jul & Mad — En lille festlig demo
               <button id="qr-btn" class="btn ghost" style="margin-left:1rem;color:#999">QR-kode</button>
             </div>
           </footer>

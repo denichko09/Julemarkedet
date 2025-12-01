@@ -78,9 +78,6 @@ const foodListElem = document.getElementById('food-list');
 const searchInput = document.getElementById('search');
 const filterBtns = Array.from(document.querySelectorAll('.filter-btn'));
 const favoritesElem = document.getElementById('favorites');
-const shoppingListElem = document.getElementById('shopping-list');
-const clearShoppingBtn = document.getElementById('clear-shopping');
-const exportShoppingBtn = document.getElementById('export-shopping');
 const sortSelect = document.getElementById('sort');
 const detailModal = document.getElementById('detail-modal');
 const closeModalBtn = document.getElementById('close-modal');
@@ -89,7 +86,6 @@ const modalTitle = document.getElementById('modal-title');
 const modalDesc = document.getElementById('modal-desc');
 const modalRecipe = document.getElementById('modal-recipe');
 const modalFavBtn = document.getElementById('modal-fav');
-const modalAddBtn = document.getElementById('modal-add');
 const toggleSnow = document.getElementById('toggle-snow');
 const toggleLights = document.getElementById('toggle-lights');
 
@@ -104,13 +100,11 @@ const foods = [
 let state = {
   filter: 'all',
   q: '',
-  favorites: JSON.parse(localStorage.getItem('jul-favs') || '[]'),
-  shopping: JSON.parse(localStorage.getItem('jul-shopping') || '[]')
+  favorites: JSON.parse(localStorage.getItem('jul-favs') || '[]')
 };
 
 function saveState(){
   localStorage.setItem('jul-favs', JSON.stringify(state.favorites));
-  localStorage.setItem('jul-shopping', JSON.stringify(state.shopping));
 }
 
 function render(){
@@ -133,7 +127,6 @@ function render(){
       <div class="meta">
         <button class="icon-btn fav-btn" aria-label="favorit">${state.favorites.includes(f.id)?'❤️':'🤍'}</button>
         <div>
-          <button class="btn add-btn">Til indkøb</button>
           <button class="btn view-btn">Se</button>
         </div>
       </div>
@@ -144,7 +137,6 @@ function render(){
   document.querySelectorAll('.card').forEach(card=>{
     const id = Number(card.dataset.id);
     card.querySelector('.view-btn').addEventListener('click',()=>openModal(id));
-    card.querySelector('.add-btn').addEventListener('click',()=>addToShopping(id));
     card.querySelector('.fav-btn').addEventListener('click',(e)=>{toggleFav(id); e.stopPropagation();});
   });
 
@@ -158,14 +150,10 @@ function renderSidebar(){
     return `<li>${f ? f.name : '–' } <button class="icon-btn small remove-fav" data-id="${id}">✖</button></li>`;
   }).join('') || '<li><em>Ingen favoritter endnu</em></li>';
 
-  // shopping
-  shoppingListElem.innerHTML = state.shopping.map(item=>`<li>${item} <button class="icon-btn small remove-shop">✖</button></li>`).join('') || '<li><em>Indkøbsliste er tom</em></li>';
-
   // handlers for remove
   document.querySelectorAll('.remove-fav').forEach(btn=>btn.addEventListener('click',()=>{
     const id=Number(btn.dataset.id); state.favorites = state.favorites.filter(x=>x!==id); saveState(); render();
   }));
-  document.querySelectorAll('.remove-shop').forEach((btn,i)=>btn.addEventListener('click',()=>{ state.shopping.splice(i,1); saveState(); render(); }));
 }
 
 function toggleFav(id){
@@ -174,21 +162,12 @@ function toggleFav(id){
   saveState(); render();
 }
 
-function addToShopping(id){
-  const f = foods.find(x=>x.id===id);
-  if(!f) return;
-  state.shopping.push(f.name);
-  saveState(); render();
-}
-
 function openModal(id){
   const f = foods.find(x=>x.id===id); if(!f) return;
   modalImg.src = f.img; modalTitle.textContent = f.name; modalDesc.textContent = f.desc;
   modalRecipe.innerHTML = f.recipe.map(r=>`<li>${r}</li>`).join('');
   modalFavBtn.textContent = state.favorites.includes(id)?'Fjern favorit':'Favorit';
-  modalAddBtn.textContent = 'Tilføj til indkøb';
   modalFavBtn.onclick = ()=>{ toggleFav(id); modalFavBtn.textContent = state.favorites.includes(id)?'Fjern favorit':'Favorit'; };
-  modalAddBtn.onclick = ()=>{ addToShopping(id); };
   detailModal.classList.remove('hidden');
 }
 
@@ -197,8 +176,6 @@ function closeModal(){ detailModal.classList.add('hidden'); }
 // events
 filterBtns.forEach(b=>b.addEventListener('click',()=>{ filterBtns.forEach(x=>x.classList.remove('active')); b.classList.add('active'); state.filter = b.dataset.filter; render(); }));
 searchInput.addEventListener('input',()=>{ state.q = searchInput.value.trim().toLowerCase(); render(); });
-clearShoppingBtn.addEventListener('click',()=>{ state.shopping = []; saveState(); render(); });
-exportShoppingBtn.addEventListener('click',()=>{ const txt = state.shopping.join('\n'); navigator.clipboard?.writeText(txt); alert('Indkøbsliste kopieret til udklipsholder'); });
 sortSelect.addEventListener('change',()=>render());
 closeModalBtn.addEventListener('click',closeModal);
 detailModal.addEventListener('click',(e)=>{ if(e.target===detailModal) closeModal(); });
