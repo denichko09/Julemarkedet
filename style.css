@@ -50,6 +50,7 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
   /* ensure interactive controls have slightly opaque backgrounds for readability */
   /* the rest of open-upload-modal rules remain unchanged */
 @media (max-width:700px){#snowman{left:12px;width:110px;height:150px}}
+@media (max-width:480px){#snowman{display:none}}
 
 /* Header */
 .site-header{position:relative;padding:1rem 0 0.6rem}
@@ -101,6 +102,83 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
 .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:60}
 .modal.hidden{display:none}
 .modal-content{background:transparent;padding:1rem;border-radius:12px;max-width:900px;width:94%;display:flex;gap:1rem;backdrop-filter:none;border:none}
+.modal-content img{max-width:100%;height:auto;border-radius:8px}
+.modal-body{flex:1;overflow-y:auto;max-height:500px}
+.modal-body h3{margin:0 0 0.5rem 0;font-size:1.3rem;color:#333}
+.modal-body h4{margin:1rem 0 0.5rem 0;font-size:1.1rem;color:#333}
+.modal-body ol{margin:0;padding-left:1.5rem}
+.modal-body li{margin:0.3rem 0;color:#555}
+.modal-actions{display:flex;gap:0.5rem;margin-top:1rem}
+
+/* Mobile responsive adjustments */
+@media (max-width:1024px){
+  .layout{flex-direction:column}
+  .sidebar{width:100%;max-height:200px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.8rem}
+}
+
+@media (max-width:768px){
+  .header-row{flex-direction:column;gap:0.5rem}
+  .logo{font-size:1.4rem}
+  .controls{width:100%;flex-direction:column}
+  #search{min-width:auto;width:100%}
+  .filters{width:100%;flex-wrap:wrap}
+  .hero-title{font-size:1.8rem}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.6rem}
+  .card img{height:120px}
+  .card h4{font-size:0.95rem}
+  .card p{font-size:0.85rem}
+  .modal-content{flex-direction:column;gap:0.8rem;padding:1rem}
+  .modal-content img{max-height:300px}
+  .modal-body{max-height:400px}
+  .sidebar{max-height:none;margin-bottom:1rem}
+  .list{max-height:200px}
+}
+
+@media (max-width:480px){
+  .container{width:100%;padding:0 0.5rem}
+  .header-row{gap:0.3rem}
+  .logo{font-size:1.2rem}
+  .subtitle{font-size:0.8rem}
+  .controls{gap:0.5rem}
+  #search{padding:0.5rem 0.7rem;font-size:1rem}
+  #search::placeholder{font-size:0.9rem}
+  .filters{gap:0.3rem}
+  .filter-btn{padding:0.35rem 0.5rem;font-size:0.8rem}
+  .filter-btn .icon{width:16px;height:16px}
+  .filter-btn span{display:none}
+  .filter-btn.active span{display:inline-block}
+  .hero-title{font-size:1.4rem;margin:0.5rem 0}
+  .hero-lead{font-size:0.9rem}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.5rem;padding:0 0.2rem}
+  .card{padding:0.4rem}
+  .card img{height:100px}
+  .card h4{margin:0.4rem 0 0.1rem 0;font-size:0.9rem}
+  .card p{font-size:0.8rem;display:none}
+  .card .meta{gap:0.3rem}
+  .btn.add-btn{padding:0.3rem 0.5rem;font-size:0.8rem}
+  .btn.view-btn{padding:0.3rem 0.5rem;font-size:0.8rem}
+  .modal-content{width:98%;padding:0.8rem;border-radius:8px;max-height:85vh}
+  .modal-content img{max-height:200px}
+  .close{font-size:1.5rem;right:0.5rem;top:0.5rem}
+  .sidebar{padding:0.5rem;margin-bottom:0.8rem}
+  .sidebar-section{margin-bottom:0.6rem}
+  .sidebar h3{font-size:0.95rem;margin:0 0 0.3rem 0}
+  .list{max-height:150px;font-size:0.85rem}
+  .list li{padding:0.2rem 0.2rem}
+  .shopping-actions{display:flex;gap:0.4rem}
+  .shopping-actions .btn{flex:1;padding:0.4rem 0.3rem;font-size:0.8rem}
+  main{padding:1rem 0.5rem 6rem}
+  .hero{padding:1.5rem 0 0.8rem}
+}
+
+@media (max-width:360px){
+  .controls{gap:0.3rem}
+  .filter-btn{padding:0.3rem 0.4rem;font-size:0.75rem}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+  .card img{height:80px}
+  .card h4{font-size:0.8rem}
+}
 
 main {
   padding: 2rem 0.5rem 6rem;
@@ -496,6 +574,36 @@ main {
 .close:hover {
   color: #1db954;
 }
+
+/* Footer */
+.site-footer{
+  background:transparent;
+  padding:1.5rem;
+  text-align:center;
+  color:#555;
+  font-size:0.9rem;
+  border-top:1px solid rgba(0,0,0,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  flex-wrap:wrap;
+}
+#qr-btn{margin:0!important}
+
+@media (max-width:480px){
+  .site-footer{
+    flex-direction:column;
+    padding:1rem 0.5rem;
+    font-size:0.85rem;
+    gap:0.8rem;
+  }
+  #qr-btn{
+    width:100%;
+    margin:0.5rem 0 0 0!important;
+  }
+}
+
 /* Skjul scrollbar i Chrome, Edge og Safari */
 body::-webkit-scrollbar,
 main::-webkit-scrollbar {
