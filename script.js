@@ -256,7 +256,7 @@ const qrBtn = document.getElementById('qr-btn');
 const closeQrBtn = document.getElementById('close-qr');
 const qrCodeImg = document.getElementById('qr-code');
 
-const siteUrl = 'http://127.0.0.1:5500/frontend/index.html';
+const siteUrl = 'https://denichko09.github.io/Julemarkedet/';
 const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(siteUrl)}`;
 
 qrCodeImg.src = qrApiUrl;
