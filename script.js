@@ -91,10 +91,10 @@ const toggleLights = document.getElementById('toggle-lights');
 
 // sample dataset of Danish Christmas foods with Unsplash images
 const foods = [
-  { id:1, name:'Tarteletter', category:'mains', img:'https://opskrifteradmin.coop.dk/media/25302/tarteletter-1080_1080.jpg?width=850&upscale=false&format=webp', desc:'Dejlige flødeostehummertarteletter - klassisk dansk juleret.', recipe:["Preheat ovn til 200°C","Tag små tarteletskaller","Fyld med flødeostehummer og gourmetmajs","Bag 10-12 minutter til gylden farve","Server varm"] },
-  { id:2, name:'Gløgg', category:'drinks', img:'https://sweetstothestreets.dk/wp-content/uploads/2023/01/gloegg-1080x675.jpg', desc:'Varm krydret vin med rosiner og mandler.', recipe:["Varm vin med krydderier","Tilsæt sukker efter smag","Server varm med rosiner"] },
-  { id:3, name:'Æbleskiver', category:'sweets', img:'https://mummum.dk/wp-content/uploads/2024/11/aebleskiver-med-aeble-min-1536x1536.jpg', desc:'Små runde pandekager serveret med flormelis og syltetøj.', recipe:["Lav dej med æg og kærnemælk","Bag i æbleskivepande","Vend ofte","Server varme med syltetøj"] },
-  { id:4, name:'Risalamande', category:'sweets', img:'https://www.valdemarsro.dk/wp-content/2012/11/risalamande-1.jpg', desc:'Kold risdessert med kirsebærsauce.', recipe:["Kog risengrød","Bland med flødeskum og hakkede mandler","Server kold med kirsebærsauce"] },
+  { id:1, name:'Tarteletter', price: 35, category:'mains', img:'https://opskrifteradmin.coop.dk/media/25302/tarteletter-1080_1080.jpg?width=850&upscale=false&format=webp', desc:'Dejlige flødeostehummertarteletter - klassisk dansk juleret.', recipe:["Preheat ovn til 200°C","Tag små tarteletskaller","Fyld med flødeostehummer og gourmetmajs","Bag 10-12 minutter til gylden farve","Server varm"] },
+  { id:2, name:'Gløgg', price: 20, category:'drinks', img:'https://sweetstothestreets.dk/wp-content/uploads/2023/01/gloegg-1080x675.jpg', desc:'Varm krydret vin med rosiner og mandler.', recipe:["Varm vin med krydderier","Tilsæt sukker efter smag","Server varm med rosiner"] },
+  { id:3, name:'Æbleskiver', price: 25, category:'sweets', img:'https://mummum.dk/wp-content/uploads/2024/11/aebleskiver-med-aeble-min-1536x1536.jpg', desc:'Små runde pandekager serveret med flormelis og syltetøj.', recipe:["Lav dej med æg og kærnemælk","Bag i æbleskivepande","Vend ofte","Server varme med syltetøj"] },
+  { id:4, name:'Risalamande', price: 30, category:'sweets', img:'https://www.valdemarsro.dk/wp-content/2012/11/risalamande-1.jpg', desc:'Kold risdessert med kirsebærsauce.', recipe:["Kog risengrød","Bland med flødeskum og hakkede mandler","Server kold med kirsebærsauce"] },
 ];
 
 let state = {
@@ -125,6 +125,7 @@ function render(){
       <h4>${f.name}</h4>
       <p>${f.desc}</p>
       <div class="meta">
+        <span class="price">${f.price} kr.</span>
         <button class="icon-btn fav-btn" aria-label="favorit">${state.favorites.includes(f.id)?'❤️':'🤍'}</button>
         <div>
           <button class="btn view-btn">Se</button>
@@ -164,7 +165,9 @@ function toggleFav(id){
 
 function openModal(id){
   const f = foods.find(x=>x.id===id); if(!f) return;
-  modalImg.src = f.img; modalTitle.textContent = f.name; modalDesc.textContent = f.desc;
+  modalImg.src = f.img;
+  modalTitle.textContent = f.name;
+  modalDesc.innerHTML = `<span class="price" style="font-weight:bold;color:#222">${f.price} kr.</span><br>${f.desc}`;
   modalRecipe.innerHTML = f.recipe.map(r=>`<li>${r}</li>`).join('');
   modalFavBtn.textContent = state.favorites.includes(id)?'Fjern favorit':'Favorit';
   modalFavBtn.onclick = ()=>{ toggleFav(id); modalFavBtn.textContent = state.favorites.includes(id)?'Fjern favorit':'Favorit'; };
