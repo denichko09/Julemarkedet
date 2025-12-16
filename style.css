@@ -124,7 +124,7 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
 /* Grid */
 .grid-wrap{flex:1}
 .toolbar{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem}
 .card{background:transparent;border-radius:12px;padding:0.6rem;border:none;transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column}
 .card:hover{transform:translateY(-6px);box-shadow:0 10px 30px rgba(0,0,0,0.6)}
 .card img{width:100%;height:150px;object-fit:cover;border-radius:8px}
@@ -150,7 +150,7 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
 @media (max-width:1024px){
   .layout{flex-direction:column}
   .sidebar{width:100%;max-height:200px}
-  .grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:0.8rem}
+  .grid{grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.8rem}
 }
 
 @media (max-width:768px){
@@ -160,7 +160,7 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
   #search{min-width:auto;width:100%}
   .filters{width:100%;flex-wrap:wrap}
   .hero-title{font-size:1.8rem}
-  .grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:0.6rem}
+  .grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:0.6rem}
   .card img{height:120px}
   .card h4{font-size:0.95rem}
   .card p{font-size:0.85rem}
@@ -189,7 +189,7 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
     .hero{min-height:150px;justify-content:center}
     .hero-container{justify-content:center}
     .hero-content{text-align:center}
-  .grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:0.5rem;padding:0 0.2rem}
+  .grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:0.5rem;padding:0 0.2rem}
   .card{padding:0.4rem}
   .card img{height:100px}
   .card h4{margin:0.4rem 0 0.1rem 0;font-size:0.9rem}
@@ -215,7 +215,7 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
 @media (max-width:360px){
   .controls{gap:0.3rem}
   .filter-btn{padding:0.3rem 0.4rem;font-size:0.75rem}
-  .grid{grid-template-columns:repeat(auto-fill,minmax(110px,1fr))}
+  .grid{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
   .card img{height:80px}
   .card h4{font-size:0.8rem}
 }
