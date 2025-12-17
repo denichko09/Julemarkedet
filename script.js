@@ -92,7 +92,7 @@ const backToBoothsBtn = document.getElementById('back-to-booths');
 
 // sample dataset of Danish Christmas foods with local images
 const foods = [
-  { id:1, name:'Tarteletter', price: 35, category:'bode2', img:'./images/Tarteletter.png', desc:'Dejlige flødeostehummertarteletter - klassisk dansk juleret.', recipe:["Preheat ovn til 200°C","Tag små tarteletskaller","Fyld med flødeostehummer og gourmetmajs","Bag 10-12 minutter til gylden farve","Server varm"] },
+  { id:1, name:'Tarteletter', price: '15 for 2', category:'bode2', img:'./images/Tarteletter.png', desc:'Dejlige flødeostehummertarteletter - klassisk dansk juleret.', recipe:["Preheat ovn til 200°C","Tag små tarteletskaller","Fyld med flødeostehummer og gourmetmajs","Bag 10-12 minutter til gylden farve","Server varm"] },
   { id:2, name:'Gløgg', price: 20, category:'bode3', img:'./images/Gløgg.png', desc:'Varm krydret vin med rosiner og mandler.', recipe:["Varm vin med krydderier","Tilsæt sukker efter smag","Server varm med rosiner"] },
   { id:3, name:'Æbleskiver', price: 15, category:'bode1', img:'./images/Æbleskiver.png', desc:'Lækre hjemmelavede æbleskiver lige til en hul tand. 3 stk for 15 kr.', recipe:["Bland alt det tøre i en skål (mel, citronskrald, sukker, kardemumme, natron, salt)","Del blommerne og pisk ægehviderne stive","Tilsæt blomerne og kærnemælken til det tøre og pisk til jævn","Vend de stive ægehvider i dejen","Lad æbleskivehjærnet blive godt varm og stej i masser af smør","Fyld hullerne helt op og vend dem med f.eks. en kødnål"] },
   { id:5, name:'Hjemmelavede Vaniljekranse', price: 10, category:'bode1', img:'./images/Hjemmelavede Vaniljekranse.png', desc:'Klassiske vaniljekranse med ægte vaniljekulde. 10 stk for 10 kr. Arbejdstid: 30 min.', recipe:["Tag smøren ud af køleskabet mindst 6 timer før","Forvarm ovnen til 200 grader","Flæk vaniljestang og skrab kornene ud, mas dem sammen med lidt sukker","Pisk vaniljestang, sukker og blødt smør","Pisk æget i","Bland hvedemel og mandelmel og eldt det ind i dejen","Put dejen i en sprøjtepose og sprøjt krænse ud","Bag vaniljekransende i 9-11 minutter til de er lyst gyldne","Lad dem køle helt af før opbevaring"] },
@@ -126,23 +126,33 @@ function render(){
     foodListElem.innerHTML = `
       <article class="booth-card" data-booth="bode1">
         <div class="booth-icon">🏪</div>
-        <h3>Bode 1</h3>
+        <h3>Bod 1</h3>
         <p>Kager og søde sager</p>
       </article>
       <article class="booth-card" data-booth="bode2">
         <div class="booth-icon">🏪</div>
-        <h3>Bode 2</h3>
+        <h3>Bod 2</h3>
         <p>Klassiske retter</p>
       </article>
       <article class="booth-card" data-booth="bode3">
         <div class="booth-icon">🏪</div>
-        <h3>Bode 3</h3>
+        <h3>Bod 3</h3>
         <p>Varm drikke</p>
       </article>
       <article class="booth-card" data-booth="bode4">
         <div class="booth-icon">🏪</div>
-        <h3>Bode 4</h3>
+        <h3>Bod 4</h3>
         <p>Specialiteter</p>
+      </article>
+      <article class="booth-card" data-booth="bode5">
+        <div class="booth-icon">🏪</div>
+        <h3>Bod 5</h3>
+        <p>Diverse godbidder</p>
+      </article>
+      <article class="booth-card" data-booth="bode6">
+        <div class="booth-icon">🏪</div>
+        <h3>Bod 6</h3>
+        <p>Julegaver</p>
       </article>
     `;
     
