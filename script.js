@@ -103,7 +103,7 @@ const foods = [
 ];
 
 let state = {
-  filter: 'all',
+  filter: 'bode1',
   q: '',
   favorites: JSON.parse(localStorage.getItem('jul-favs') || '[]')
 };
@@ -115,7 +115,7 @@ function saveState(){
 function render(){
   // filters
   const filtered = foods.filter(f=>{
-    if(state.filter !== 'all' && f.category !== state.filter) return false;
+    if(f.category !== state.filter) return false;
     if(state.q && !(f.name.toLowerCase().includes(state.q) || f.desc.toLowerCase().includes(state.q))) return false;
     return true;
   });
