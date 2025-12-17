@@ -121,6 +121,28 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
 .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04)}
 .btn.small{padding:0.35rem 0.5rem;font-size:0.9rem}
 
+/* Back to booths button */
+#back-to-booths{
+  background:linear-gradient(135deg,#c0392b,#e74c3c);
+  color:#fff;
+  font-weight:700;
+  font-size:1.1rem;
+  padding:0.8rem 1.5rem;
+  border:none;
+  border-radius:12px;
+  box-shadow:0 4px 12px rgba(192,57,43,0.3);
+  transition:all 0.2s;
+  margin-right:1rem;
+}
+#back-to-booths:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(192,57,43,0.4);
+  background:linear-gradient(135deg,#a8301f,#c0392b);
+}
+#back-to-booths:active{
+  transform:translateY(0);
+}
+
 /* Grid */
 .grid-wrap{flex:1}
 .toolbar{display:flex;align-items:center;gap:0.6rem;margin-bottom:0.6rem}
@@ -177,11 +199,12 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
 .modal.hidden{display:none}
 .modal-content{background:transparent;padding:1rem;border-radius:12px;max-width:900px;width:94%;display:flex;gap:1rem;backdrop-filter:none;border:none}
 .modal-content img{max-width:100%;height:auto;border-radius:8px}
-.modal-body{flex:1;overflow-y:auto;max-height:500px}
-.modal-body h3{margin:0 0 0.5rem 0;font-size:1.3rem;color:#333}
-.modal-body h4{margin:1rem 0 0.5rem 0;font-size:1.1rem;color:#333}
+.modal-body{flex:1;overflow-y:auto;max-height:500px;color:#000}
+.modal-body h3{margin:0 0 0.5rem 0;font-size:1.3rem;color:#000}
+.modal-body h4{margin:1rem 0 0.5rem 0;font-size:1.1rem;color:#000}
 .modal-body ol{margin:0;padding-left:1.5rem}
-.modal-body li{margin:0.3rem 0;color:#555}
+.modal-body li{margin:0.3rem 0;color:#000}
+.modal-body p{color:#000}
 .modal-actions{display:flex;gap:0.5rem;margin-top:1rem}
 
 /* Mobile responsive adjustments */
