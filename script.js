@@ -88,6 +88,7 @@ const modalRecipe = document.getElementById('modal-recipe');
 const modalFavBtn = document.getElementById('modal-fav');
 const toggleSnow = document.getElementById('toggle-snow');
 const toggleLights = document.getElementById('toggle-lights');
+const backToBoothsBtn = document.getElementById('back-to-booths');
 
 // sample dataset of Danish Christmas foods with local images
 const foods = [
@@ -103,9 +104,10 @@ const foods = [
 ];
 
 let state = {
-  filter: 'bode1',
+  filter: null,
   q: '',
-  favorites: JSON.parse(localStorage.getItem('jul-favs') || '[]')
+  favorites: JSON.parse(localStorage.getItem('jul-favs') || '[]'),
+  showBoothSelection: true
 };
 
 function saveState(){
@@ -113,9 +115,62 @@ function saveState(){
 }
 
 function render(){
+  // Show/hide UI elements based on state
+  if(state.showBoothSelection) {
+    // Hide filters, search, and sort when showing booths
+    document.querySelector('.filters').style.display = 'none';
+    searchInput.style.display = 'none';
+    document.querySelector('.toolbar').style.display = 'none';
+    if(backToBoothsBtn) backToBoothsBtn.style.display = 'none';
+    
+    foodListElem.innerHTML = `
+      <article class="booth-card" data-booth="bode1">
+        <div class="booth-icon">🏪</div>
+        <h3>Bode 1</h3>
+        <p>Kager og søde sager</p>
+      </article>
+      <article class="booth-card" data-booth="bode2">
+        <div class="booth-icon">🏪</div>
+        <h3>Bode 2</h3>
+        <p>Klassiske retter</p>
+      </article>
+      <article class="booth-card" data-booth="bode3">
+        <div class="booth-icon">🏪</div>
+        <h3>Bode 3</h3>
+        <p>Varm drikke</p>
+      </article>
+      <article class="booth-card" data-booth="bode4">
+        <div class="booth-icon">🏪</div>
+        <h3>Bode 4</h3>
+        <p>Specialiteter</p>
+      </article>
+    `;
+    
+    // Attach booth selection events
+    document.querySelectorAll('.booth-card').forEach(card=>{
+      card.addEventListener('click', ()=>{
+        const booth = card.dataset.booth;
+        state.filter = booth;
+        state.showBoothSelection = false;
+        // Update active filter button
+        filterBtns.forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.filter === booth);
+        });
+        render();
+      });
+    });
+    return;
+  }
+  
+  // Show filters, search, and sort when showing food items
+  document.querySelector('.filters').style.display = 'flex';
+  searchInput.style.display = 'block';
+  document.querySelector('.toolbar').style.display = 'flex';
+  if(backToBoothsBtn) backToBoothsBtn.style.display = 'inline-flex';
+
   // filters
   const filtered = foods.filter(f=>{
-    if(f.category !== state.filter) return false;
+    if(!state.filter || f.category !== state.filter) return false;
     if(state.q && !(f.name.toLowerCase().includes(state.q) || f.desc.toLowerCase().includes(state.q))) return false;
     return true;
   });
@@ -182,7 +237,23 @@ function openModal(id){
 function closeModal(){ detailModal.classList.add('hidden'); }
 
 // events
-filterBtns.forEach(b=>b.addEventListener('click',()=>{ filterBtns.forEach(x=>x.classList.remove('active')); b.classList.add('active'); state.filter = b.dataset.filter; render(); }));
+filterBtns.forEach(b=>b.addEventListener('click',()=>{ 
+  filterBtns.forEach(x=>x.classList.remove('active')); 
+  b.classList.add('active'); 
+  state.filter = b.dataset.filter; 
+  state.showBoothSelection = false;
+  render(); 
+}));
+if(backToBoothsBtn) {
+  backToBoothsBtn.addEventListener('click', ()=>{
+    state.showBoothSelection = true;
+    state.filter = null;
+    state.q = '';
+    searchInput.value = '';
+    filterBtns.forEach(x=>x.classList.remove('active'));
+    render();
+  });
+}
 searchInput.addEventListener('input',()=>{ state.q = searchInput.value.trim().toLowerCase(); render(); });
 sortSelect.addEventListener('change',()=>render());
 closeModalBtn.addEventListener('click',closeModal);

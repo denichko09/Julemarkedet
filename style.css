@@ -134,6 +134,44 @@ header.site-header, main, footer, .container{position:relative;z-index:10}
 .icon-btn{background:transparent;border:none;color:#999;cursor:pointer;font-size:1.1rem;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:0.3rem;border-radius:6px}
 .fav{color:#ff8a8a}
 
+/* Booth selection cards */
+.booth-card{
+  background:rgba(255,255,255,0.9);
+  border-radius:16px;
+  padding:2rem;
+  border:2px solid rgba(0,0,0,0.1);
+  transition:transform .2s,box-shadow .2s;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  text-align:center;
+  min-height:200px;
+  backdrop-filter:blur(6px);
+}
+.booth-card:hover{
+  transform:translateY(-8px) scale(1.02);
+  box-shadow:0 15px 40px rgba(0,0,0,0.2);
+  border-color:rgba(192,57,43,0.5);
+}
+.booth-icon{
+  font-size:4rem;
+  margin-bottom:1rem;
+}
+.booth-card h3{
+  margin:0.5rem 0 0.3rem 0;
+  font-size:1.5rem;
+  color:#000;
+  font-weight:700;
+}
+.booth-card p{
+  margin:0;
+  color:#000;
+  font-size:1rem;
+  opacity:0.8;
+}
+
 /* Modal */
 .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);z-index:60}
 .modal.hidden{display:none}
