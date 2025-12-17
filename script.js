@@ -124,6 +124,11 @@ function render(){
     if(backToBoothsBtn) backToBoothsBtn.style.display = 'none';
     
     foodListElem.innerHTML = `
+      <article class="booth-card" data-booth="alle">
+        <div class="booth-icon">🎄</div>
+        <h3>Alle</h3>
+        <p>Se alle retter fra alle boder</p>
+      </article>
       <article class="booth-card" data-booth="bode1">
         <div class="booth-icon">🏪</div>
         <h3>Bod 1</h3>
@@ -180,7 +185,7 @@ function render(){
 
   // filters
   const filtered = foods.filter(f=>{
-    if(!state.filter || f.category !== state.filter) return false;
+    if(state.filter && state.filter !== 'alle' && f.category !== state.filter) return false;
     if(state.q && !(f.name.toLowerCase().includes(state.q) || f.desc.toLowerCase().includes(state.q))) return false;
     return true;
   });
