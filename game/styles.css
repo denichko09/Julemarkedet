@@ -1,0 +1,201 @@
+:root{
+    --bg:#0f1724;
+    --panel:#0b1220;
+    --accent:#ffd966;
+    --muted:#000000;
+    --glass: rgba(255,255,255,0.03);
+    --radius:10px;
+}
+*{box-sizing:border-box;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+body{margin:0;background:linear-gradient(180deg,#747214,var(--bg));color:#e6eef6;min-height:100vh}
+.app{max-width:1200px;margin:18px auto;padding:12px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.topbar h1{margin:0;font-size:20px}
+.stats{display:flex;gap:12px;color:var(--muted)}
+.controls button{margin-left:6px;padding:6px 10px;border-radius:8px;border:none;background:#babd2f;color:#fff;cursor:pointer}
+.main{display:flex;gap:14px}
+.game-area{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px;background:var(--panel);border-radius:var(--radius)}
+.cookie-button{width:220px;height:220px;border-radius:50%;background:linear-gradient(180deg,#ffd966,#ffb84d);border:none;box-shadow:0 6px 30px rgba(0,0,0,0.6);font-size:42px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.cookie-emoji{font-size:256px}
+.feedback{position:relative;min-height:40px;width:100%;text-align:center;margin-top:18px;color:var(--accent);font-weight:700}
+.side{width:420px;display:flex;flex-direction:column;gap:12px}
+.panel{background:var(--panel);padding:12px;border-radius:12px;min-height:120px}
+.grid{display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto}
+.shop-item, .upgrade-item, .achievement-item {background:var(--glass);padding:8px;border-radius:8px;display:flex;justify-content:space-between;align-items:center}
+.shop-item .meta, .upgrade-item .meta {flex:1;margin-left:8px}
+.shop-item button, .upgrade-item button {padding:6px 8px;border:none;border-radius:8px;background:#0ea5a7;color:#031b1b;cursor:pointer}
+.achievement-item.locked{opacity:0.6}
+.footer{text-align:center;margin-top:12px;color:var(--muted);font-size:13px}
+
+/* floating numbers */
+.floating-number{
+    position:sticky;left:75%;top:50%;transform:translate(-50%,-50%);pointer-events:all;font-weight:800;color:var(--accent);
+    text-shadow:0 2px 6px rgba(0,0,0,0.6);transition:transform 0.9s ease,opacity 0.9s ease;z-index:9999
+}
+
+/* riddle modal / flash */
+.riddle-modal{position:fixed;inset:0;background:rgba(2,6,23,0.65);display:grid;place-items:center;z-index:20000}
+.riddle-card{background:#091523;padding:18px;border-radius:12px;width:90%;max-width:560px;color:#e6eef6}
+.riddle-card input{width:100%;padding:8px;margin-top:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:inherit}
+.riddle-card .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:10px}
+.riddle-card button{padding:8px 10px;border-radius:8px;border:none;cursor:pointer}
+
+/* flash messages */
+.flash-msg{position:fixed;right:18px;bottom:18px;background:#06202b;padding:8px 12px;border-radius:8px;color:#fff;z-index:20010;opacity:1;transition:opacity .3s}
+
+/* responsive */
+@media (max-width:920px){
+    .main{flex-direction:column}
+    .side{width:100%}
+    .cookie-button{width:180px;height:180px}
+}
+.cookie-button {
+    width: 180px;
+    height: 180px;
+    background-image: url('æbleskive.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: transform 0.1s ease;
+}
+
+.cookie-button:active {
+    transform: scale(0.9);
+}
+
+.cookie-button:hover {
+    filter: brightness(1.1);
+}
+/* BAGGRUND */
+body {
+    background: url('download(13)') center/cover no-repeat fixed;
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* MIDTCENTER LAYOUT */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* ÆBLESKIVE-KNAP */
+.cookie-button {
+    width: 680px;
+    height: 680px;
+    background-image: url('æbleskive.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    box-shadow: 0px 0px 25px rgba(255, 180, 80, 0.7);
+    transition: transform 0.1s ease, filter 0.2s ease;
+}
+
+.cookie-button:hover {
+    filter: brightness(1.1);
+}
+
+.cookie-button:active {
+    transform: scale(0.85) rotate(10deg);
+}
+
+/* FLOATING NUMBERS (DU HAR ALLEREDE) */
+.floating-number {
+    position: absolute;
+    color: #ffdd55;
+    font-size: 28px;
+    font-weight: bold;
+    pointer-events: none;
+    animation: floatUp 0.9s ease-out forwards;
+}
+
+@keyframes floatUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-60px);
+    }
+}
+
+/* PARTIKLER – MINI ÆBLESKIVER */
+.particle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('æbleskive.png');
+    background-size: cover;
+    pointer-events: none;
+    animation: particleMove 0.6s ease-out forwards;
+}
+
+@keyframes particleMove {
+    from {
+        opacity: 1;
+        transform: translate(0,0) scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: translate(
+            calc(-30px + 60px * random()),
+            calc(-30px + -80px * random())
+        ) scale(0.4);
+    }
+}
+
+/* SHOP-KORT */
+.shop-item, .upgrade-item {
+    background: rgba(255, 240, 200, 0.35);
+    border: 1px solid #d8c08e;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px auto;
+    width: 320px;
+}
+
+button.buyBtn {
+    padding: 10px 20px;
+    margin-top: 80px;
+}
+button.buyBtn:hover {
+    background-color: #ffcc66;
+    color: #000;
+}.cookie-button {
+    width: 360px;
+    height: 360px;
+    background-image: url('æbleskive.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+
+    transition: transform 0.1s ease;
+}
+
+.cookie-button:active {
+    transform: scale(0.9);
+}
+
+.cookie-button:hover {
+    filter: brightness(1.1);
+}
+
+#title {
+    color: black !important;
+}

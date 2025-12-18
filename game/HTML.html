@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=4" />
+    <title>Æbleskive Imperiet</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="app">
+        <header class="topbar">
+            <h1 id="title">🥞 Æbleskive Imperiet</h1>
+            <div class="stats">
+                <div>Æbleskiver: <span id="cookieCount">0</span></div>
+                <div>Per sekund: <span id="cpsDisplay">0</span></div>
+                <div>Per klik: <span id="pcDisplay">0</span></div>
+            </div>
+            <div class="controls">
+                <button id="saveBtn">Gem</button>
+                <button id="loadBtn">Indlæs</button>
+                <button id="resetBtn">Nulstil</button>
+            </div>
+        </header>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://127.0.0.1:5500/HTML.html alt="QR-kode">
+
+        <main class="main">
+            <section class="game-area">
+                <button id="cookieButton" class="cookie-button">
+                    <span class="cookie-emoji">🥞</span>
+                </button>
+                <div class="feedback" id="clickFeedback"></div>
+            </section>
+
+            <aside class="side">
+                <div class="panel">
+                    <h2>Butik — Fabrikker & Automations</h2>
+                    <div id="itemsGrid" class="grid"></div>
+                </div>
+
+                <div class="panel">
+                    <h2>Opgraderinger</h2>
+                    <div id="upgradesGrid" class="grid"></div>
+                </div>
+
+                <div class="panel">
+                    <h2>Advanments & Gåder</h2>
+                    <div id="achievementsGrid" class="grid"></div>
+                    <div style="margin-top:8px;">
+                        <button id="getRiddleBtn">Træk en gåde</button>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <footer class="footer">
+            <small></small>
+        </footer>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
