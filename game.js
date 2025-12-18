@@ -10,6 +10,7 @@ let perSecond = 100;
 
 // ---------- DOM refs ----------
 const countEl = document.getElementById("cookieCount");
+const mainCookieCount = document.getElementById("mainCookieCount");
 const cookieBtn = document.getElementById("cookieButton");
 const cpsEl = document.getElementById("cpsDisplay");
 const pcEl = document.getElementById("pcDisplay");
@@ -258,6 +259,7 @@ function showRiddleModal(r){
 // ---------- UI & events ----------
 function updateUI(){
     countEl.textContent = formatNumber(cookies);
+    if(mainCookieCount) mainCookieCount.textContent = formatNumber(cookies);
     cpsEl.textContent = formatNumber(perSecond);
     pcEl.textContent = formatNumber(perClick);
 }
